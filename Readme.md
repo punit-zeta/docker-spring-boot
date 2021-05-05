@@ -47,7 +47,7 @@ tree `helmchart-name`
     ~~~
 - Install helm chart 
     ~~~
-    helm install springb-release --debug --dry-run `springboot`
+    helm install spring-release --debug --dry-run `springboot`
     helm install spring-release springboot
     ~~~
   The above commands will generate 3 commands in the result which needs to be executed for running your application in your
