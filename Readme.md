@@ -41,6 +41,7 @@ tree `helmchart-name`
     ~~~
     tree spingboot
     ~~~
+  Make necessary changes in values.yml (for eg: port, image repo name etc)
 - Compile your helm to see in errors using: helm lint `helmchart-name/`
     ~~~
     helm lint springboot/
