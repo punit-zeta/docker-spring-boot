@@ -16,7 +16,7 @@ Created a basic spring boot application. `/rest/docker/hello` url to access the 
 docker image with new updated jar and run the image.
   
 # Push Docker Image
-Create a new private new on hub. You may need to run `docker login` first.
+Create a new repo on docker hub. You may need to run `docker login` first.
 - Tag your image using:
 docker tag `local-image-name`:`local-image-tag` `repo-path`:`repo-tag`
     ~~~
