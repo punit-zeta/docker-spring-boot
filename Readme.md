@@ -1,12 +1,65 @@
 # Task 1
 Created a basic spring boot application. `/rest/docker/hello` url to access the application.
-### Steps to containerize your application
+### Containerize application
 
 - Create a [Dockerfile](./Dockerfile).
-- Create a docker image using the command  `docker build -f Dockerfile -t docker-spring-boot .` 
-- Run the docker image using the command `docker run -p 8085:8085 docker-spring-boot` 
+- Create a docker image using the command  
+    ~~~
+    docker build -f Dockerfile -t docker-spring-boot .
+    ~~~
+- Run the docker image using the command 
+    ~~~
+    docker run -p 8085:8085 docker-spring-boot
+    ~~~
 
-**Note**: Whenever we do some changes in the application first do `mvn clean` then `mvn install` then again build the 
+**Note**: Whenever we do some changes in the application first do `mvn clean install` then again build the 
 docker image with new updated jar and run the image.
   
+# Push Docker Image
+Create a new private new on hub. You may need to run `docker login` first.
+- Tag your image using
+docker tag `local-image-name`:`local-image-tag` `repo-path`:`repo-tag`
+    ~~~
+    docker tag docker-spring-boot:latest punitzeta/new-repo:latest
+    ~~~
+- Push the image using
+docker push `repo-path`:`repo-tag`
+    ~~~
+    docker push punitzeta/new-repo:latest
+    ~~~
+
+# Helm Deploy
+
+- Create your helm chart using
+helm create `helmchart-name`
+    ~~~
+    helm create springboot
+    ~~~
+
+- See the structure of your helm chart using
+tree `helmchart-name`
+    ~~~
+    tree spingboot
+    ~~~
+- Compile your helm to see in errors using
+helm lint `helmchart-name/`
+    ~~~
+    helm lint springboot/
+    ~~~
+- Install helm chart 
+    ~~~
+    helm install `springbot-release` --debug --dry-run `springboot`
+    helm install springbot-release springboot
+    ~~~
+- List all charts
+    ~~~
+    helm list -a
+    ~~~
+- Upgrade helm chart using   
+helm upgrade `release-name` `helmchart-name`
+    ~~~
+    helm upgrade springbot-release springboot
+    ~~~
+
+
 
